@@ -19,11 +19,10 @@
 <p id="status">Finishing up&hellip;</p>
 <div id="fallback">
   <p><strong>This page could not reach the Marcus Personal AI setup script running on your own
-  computer.</strong> Make sure it is still running, then try the authorization link again.</p>
-  <p>If it keeps failing, this is the only information this page ever holds — it is not sent
-  anywhere except back to your own computer at <code>127.0.0.1</code>, and it stops mattering the
-  moment you close this tab:</p>
-  <code id="raw-params"></code>
+  computer.</strong> Make sure it is still running, then start the authorization again from your
+  terminal.</p>
+  <p>Nothing from this authorization response is displayed here, stored, or sent anywhere other
+  than to your own computer at <code>127.0.0.1</code>. Close this tab when you are done.</p>
 </div>
 <script>
 // This page performs NO network call except (a) reading its own URL, which WHOOP set when it
@@ -36,20 +35,21 @@
   var params = window.location.search; // e.g. "?code=...&state=..." or "?error=..."
   var statusEl = document.getElementById('status');
   var fallbackEl = document.getElementById('fallback');
-  var rawEl = document.getElementById('raw-params');
 
   if (!params || params.length < 2) {
     statusEl.textContent = 'No authorization response was found in this page\'s URL.';
     return;
   }
 
+  // The authorization response is relayed to the local listener and NEVER rendered into the DOM,
+  // written to storage, or included in any message shown here -- not even on failure. Anything
+  // displayed on this page is a fixed, bounded status string with no request content in it.
   fetch(LOCAL_CALLBACK_BASE + params, { mode: 'no-cors' })
     .then(function () {
       statusEl.textContent = 'Authorization received. You can close this window and return to your terminal.';
     })
     .catch(function () {
       statusEl.textContent = 'Could not reach the local setup script.';
-      rawEl.textContent = window.location.href;
       fallbackEl.style.display = 'block';
     });
 })();

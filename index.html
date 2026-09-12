@@ -30,9 +30,11 @@ reads:</p>
   <li><strong>Recovery</strong> data</li>
   <li><strong>Cycle / Strain</strong> data</li>
   <li><strong>Workout</strong> data</li>
-  <li><strong>Basic profile</strong> data (name/user ID only), used solely to verify that API
-      responses belong to the authorized account — never displayed, stored long-term, or used for
-      any other purpose</li>
+  <li><strong>Basic profile</strong>, requested solely to verify that API responses belong to the
+      authorized account. WHOOP's basic-profile response may include fields such as user ID, email
+      address, first name and last name. Only the minimum provider identifier needed for that
+      account check is used; every other field in the response is discarded immediately, is never
+      stored, never displayed, and is never promoted into any Personal AI state.</li>
 </ul>
 
 <h2>What we do with it</h2>
