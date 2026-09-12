@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WHOOP Authorization — Marcus Personal AI</title>
+<style>
+  body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif; max-width: 520px;
+        margin: 3rem auto; padding: 0 1rem; line-height: 1.5; color: #222; text-align: center; }
+  #status { font-size: 1.05rem; margin-top: 1.5rem; }
+  #fallback { display: none; margin-top: 2rem; text-align: left; font-size: 0.9rem; color: #555;
+             border-top: 1px solid #ddd; padding-top: 1rem; }
+  code { background: #f2f2f2; padding: 0.5em; border-radius: 4px; display: block;
+        word-break: break-all; margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<h2>WHOOP Authorization</h2>
+<p id="status">Finishing up&hellip;</p>
+<div id="fallback">
+  <p><strong>This page could not reach the Marcus Personal AI setup script running on your own
+  computer.</strong> Make sure it is still running, then try the authorization link again.</p>
+  <p>If it keeps failing, this is the only information this page ever holds — it is not sent
+  anywhere except back to your own computer at <code>127.0.0.1</code>, and it stops mattering the
+  moment you close this tab:</p>
+  <code id="raw-params"></code>
+</div>
+<script>
+// This page performs NO network call except (a) reading its own URL, which WHOOP set when it
+// redirected your browser here, and (b) one fetch to http://127.0.0.1 -- your OWN computer, not
+// any third party. Nothing here is logged, stored, sent to any analytics/tracking service, or
+// persisted anywhere once this tab is closed. There is no server-side code behind this page at
+// all; it is a static file.
+(function () {
+  var LOCAL_CALLBACK_BASE = 'http://127.0.0.1:53682/callback';
+  var params = window.location.search; // e.g. "?code=...&state=..." or "?error=..."
+  var statusEl = document.getElementById('status');
+  var fallbackEl = document.getElementById('fallback');
+  var rawEl = document.getElementById('raw-params');
+
+  if (!params || params.length < 2) {
+    statusEl.textContent = 'No authorization response was found in this page\'s URL.';
+    return;
+  }
+
+  fetch(LOCAL_CALLBACK_BASE + params, { mode: 'no-cors' })
+    .then(function () {
+      statusEl.textContent = 'Authorization received. You can close this window and return to your terminal.';
+    })
+    .catch(function () {
+      statusEl.textContent = 'Could not reach the local setup script.';
+      rawEl.textContent = window.location.href;
+      fallbackEl.style.display = 'block';
+    });
+})();
+</script>
+</body>
+</html>

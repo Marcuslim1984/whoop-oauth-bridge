@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Marcus Personal AI (WHOOP Integration)</title>
+<style>
+  body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif; max-width: 700px;
+        margin: 2rem auto; padding: 0 1rem; line-height: 1.6; color: #222; }
+  h1 { font-size: 1.4rem; }
+  h2 { font-size: 1.1rem; margin-top: 1.6rem; }
+  .updated { color: #666; font-size: 0.9rem; }
+  code { background: #f2f2f2; padding: 0.1em 0.3em; border-radius: 3px; }
+  footer { color: #888; font-size: 0.85rem; margin-top: 2rem; }
+</style>
+</head>
+<body>
+<h1>Privacy Policy — Marcus Personal AI (WHOOP Integration)</h1>
+<p class="updated">Last updated: 2026-09-12</p>
+
+<p>This policy covers how Marcus Personal AI ("this application") uses data obtained through its
+integration with the WHOOP API. Marcus Personal AI is a personal, single-user software project; it
+is not a commercial product and does not offer accounts to other users.</p>
+
+<h2>What WHOOP data we access</h2>
+<p>With your explicit authorization through WHOOP's own OAuth consent screen, this application
+reads:</p>
+<ul>
+  <li><strong>Sleep</strong> data</li>
+  <li><strong>Recovery</strong> data</li>
+  <li><strong>Cycle / Strain</strong> data</li>
+  <li><strong>Workout</strong> data</li>
+  <li><strong>Basic profile</strong> data (name/user ID only), used solely to verify that API
+      responses belong to the authorized account — never displayed, stored long-term, or used for
+      any other purpose</li>
+</ul>
+
+<h2>What we do with it</h2>
+<p>Data is used only to generate personal health and wellness summaries and review-only
+observations for the account owner, through a "Personal Operations Agent" feature (for example, a
+daily summary of recent sleep, recovery, strain, and workout trends).</p>
+<p>All output is <strong>review-only</strong>: the application never takes an automatic action,
+makes a medical diagnosis, or asserts authority on the basis of this data. A human reviews
+everything before it is acted on.</p>
+
+<h2>What we do not do</h2>
+<ul>
+  <li>We do <strong>not</strong> write to, modify, or delete any data in your WHOOP account.</li>
+  <li>We do <strong>not</strong> sell your data to any third party.</li>
+  <li>We do <strong>not</strong> use your data for advertising, in any form.</li>
+  <li>We do <strong>not</strong> send your real WHOOP health data to any third-party or external AI
+      model. Only a fixed, local, deterministic component processes it.</li>
+  <li>We do <strong>not</strong> automatically promote or persist this data into any long-term
+      memory or authority store without a separate, explicit acceptance step.</li>
+  <li>We do <strong>not</strong> use this data for any financial or trading purpose.</li>
+  <li>We do <strong>not</strong> import your full historical WHOOP data. Access is limited to
+      small, recent, bounded reads.</li>
+</ul>
+
+<h2>Retention and storage</h2>
+<p>WHOOP data is retained only as long as needed to produce the summaries described above, in a
+local, non-public data store.</p>
+<p>OAuth credentials (access and refresh tokens) are stored separately from any health data,
+encrypted at rest, on the account owner's own device, and are never committed to any public code
+repository.</p>
+
+<h2>Revoking access</h2>
+<p>You may revoke this application's access to your WHOOP account at any time from your WHOOP
+account settings, or by using WHOOP's own OAuth access-revocation mechanism. Once revoked, this
+application can no longer read your WHOOP data.</p>
+
+<h2>Changes to this policy</h2>
+<p>If this policy changes, the "Last updated" date above will change accordingly.</p>
+
+<h2>Contact</h2>
+<p>Questions about this policy or this application's use of WHOOP data can be sent to:
+<strong>[INSERT CONTACT EMAIL]</strong></p>
+
+<footer>This policy describes this application's actual behavior in plain language. It is not a
+statement of compliance with any specific legal or regulatory certification framework.</footer>
+</body>
+</html>
